@@ -1,14 +1,59 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import {MatCardModule} from "@angular/material/card";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import {MatInputModule} from "@angular/material/input";
+import {RouterModule, RouterOutlet, Routes} from "@angular/router";
+import { HomeComponent } from './home/home.component';
 
+import {MatToolbarModule} from "@angular/material/toolbar";
+import { FactureComponent } from './facture/facture.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserinfoComponent } from './userinfo/userinfo.component';
+import { PayementComponent } from './payement/payement.component';
+
+
+const routes: Routes = [
+  { path: '', component: LoginComponent },
+  { path: 'home', component: HomeComponent},
+  { path: 'facture', component: FactureComponent},
+  { path: 'userinfo', component: UserinfoComponent},
+  { path: 'payment', component: PayementComponent}
+
+
+
+];
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    FactureComponent,
+    NavbarComponent,
+    UserinfoComponent,
+    PayementComponent,
+
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MatSlideToggleModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    RouterOutlet,
+    RouterModule.forRoot(routes),
+    MatToolbarModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
