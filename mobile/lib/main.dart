@@ -1,115 +1,246 @@
 import 'package:flutter/material.dart';
+import 'package:jabakallah/Home.dart';
+import 'dart:core';
+
+import 'ChangePassword.dart';
+
+import 'Home.dart';
+
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+      title: 'My App',
+      home: MediaQuery(
+        data: MediaQueryData(),
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text('\n Authentification'),
+          ),
+          body: SingleChildScrollView(
+            padding: const EdgeInsets.all(16.0),
+            child: AuthentificationPage(),
+          ),
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+class AuthentificationPage extends StatefulWidget {
+  const AuthentificationPage({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  AuthentificationPageState createState() => AuthentificationPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class AuthentificationPageState extends State<AuthentificationPage> {
+  // Les contrôleurs pour les champs de texte
+  // final TextEditingController _nomController = TextEditingController();
+  // final TextEditingController _prenomController = TextEditingController();
+  final TextEditingController _telephoneController = TextEditingController();
+  final TextEditingController _passeController = TextEditingController();
+  
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+  //final TextEditingController _nouveauPasseController = TextEditingController();
+  //final TextEditingController _confirmerNouveauPasseController = TextEditingController();
+
+
+  final RegExp _phoneRegex = RegExp(r"^(?:\+212|0)(\d{9})$");
+  final RegExp _nameRegex = RegExp(r"^[a-zA-ZÀ-ÿ\-]+$");
+
+  final _formKey = GlobalKey<FormState>(); // GlobalKey for the form
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        // Les champs de texte pour les informations du client
+        Text(' ', style: TextStyle(fontSize: 20)),
+        Text('Formulaire client :',
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+        const SizedBox(height: 16.0),
+        Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              // TextFormField(
+              //   controller: _nomController,
+              //   decoration: const InputDecoration(
+              //     labelText: 'Nom',
+              //     border: OutlineInputBorder(),
+              //   ),
+              //   validator: (value) {
+              //     if (value == null || value.isEmpty) {
+              //       return 'Veuillez saisir un nom';
+              //     }
+              //     if (!_nameRegex.hasMatch(value)) {
+              //       return 'Veuillez saisir un nom valide';
+              //     }
+              //     return null;
+              //   },
+              // ),
+              // const SizedBox(height: 16.0),
+              // TextFormField(
+              //   controller: _prenomController,
+              //   decoration: const InputDecoration(
+              //     labelText: 'Prénom',
+              //     border: OutlineInputBorder(),
+              //   ),
+              //   validator: (value) {
+              //     if (value == null || value.isEmpty) {
+              //       return 'Veuillez saisir un prénom';
+              //     }
+              //     if (!_nameRegex.hasMatch(value)) {
+              //       return 'Veuillez saisir un prénom valide';
+              //     }
+              //     return null;
+              //   },
+              // ),
+              const SizedBox(height: 16.0),
+              TextFormField(
+                controller: _telephoneController,
+                decoration: const InputDecoration(
+                  labelText: 'Téléphone',
+                  border: OutlineInputBorder(),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Veuillez saisir un numéro de téléphone';
+                  }
+                  if (!_phoneRegex.hasMatch(value)) {
+                    return 'Veuillez saisir un numéro de téléphone marocain valide';
+                  }
+                  return null;
+                },
+              ),
+              // const SizedBox(height: 16.0),
+              // TextFormField(
+              //   controller: _passeController,
+              //   decoration: const InputDecoration(
+              //     labelText: 'Email (facultatif)',
+              //     border: OutlineInputBorder(),
+              //   ),
+              // ),
+              const SizedBox(height: 32.0),
+              TextFormField(
+            controller: _passeController,
+            decoration: const InputDecoration(
+              labelText: 'Mot de passe',
+              border: OutlineInputBorder(),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+          ),
+          // const SizedBox(height: 16.0),
+          // TextFormField(
+          //   controller: _nouveauPasseController,
+          //   decoration: const InputDecoration(
+          //     labelText: 'Nouveau mot de passe',
+          //     border: OutlineInputBorder(),
+          //   ),
+          // ),
+          // const SizedBox(height: 16.0),
+          // TextFormField(
+          //   controller: _confirmerNouveauPasseController,
+          //   decoration: const InputDecoration(
+          //     labelText: 'Confirmer nouveau mot de passe',
+          //     border: OutlineInputBorder(),
+          //   ),
+          //   validator: (value) {
+          //     if (value == null || value.isEmpty) {
+          //       return 'Veuillez confirmer le nouveau mot de passe';
+          //     }
+          //     if (value != _nouveauPasseController.text) {
+          //       return 'Les mots de passe ne correspondent pas';
+          //     }
+          //     return null;
+          //   },
+          // ),
+          const SizedBox(height: 16.0),
+              // Le bouton pour soumettre le formulaire
+              ElevatedButton(
+                onPressed: () {
+                  // Vérifier la validité du formulaire
+                  if (_formKey.currentState!.validate()) {
+                    // Traitement des données saisies
+                    // String nom = _nomController.text;
+                    // String prenom = _prenomController.text;
+                    String telephone = _telephoneController.text;
+                    String passe = _passeController.text;
+
+                    // Envoyer les données à un service d'ouverture de compte
+                    //try {
+                    // Créer une instance de Dio
+                    
+
+                    // Définir les données à envoyer dans la requête
+                    Map<String, dynamic> data = {
+                      // 'nom': nom,
+                      // 'prenom': prenom,
+                      'telephone': telephone,
+                      'passe': passe,
+                    };
+
+                    // Envoyer la requête POST avec les données
+                    //String url = 'https://mon-service.com/authentification';
+                    
+
+                    //http.Response response = await http.post(Uri.parse(url), body: data);
+                    //Map<String, dynamic> responseData = json.decode(response.body);
+                    //bool isFirstLogin = responseData['isFirstLogin'];
+
+                    // Vérifier le code de réponse HTTP
+                    //if (response.statusCode == 200) {
+                    // Si la réponse est OK, afficher un message de succès
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Bienvenue'),
+                      ),
+                    );
+                    // Naviguer vers la page "Hello"
+                    bool isFirstLogin = true; // pour tester si ca marche 
+
+                   if (isFirstLogin) {
+                   // Si c'est la première connexion, naviguer vers la page ChangePassword
+                            Navigator.push(context,MaterialPageRoute(builder: (context) => ChangePassword()),);}
+                    else {
+                     // Sinon, naviguer vers la page Home
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => Home()),);
+                         }
+                    //} else {
+                    // Sinon, afficher un message d'erreur avec le code de réponse HTTP
+                    //  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Compte non existant '),),);
+                    //}
+
+                    //} catch (e) {
+                    // Afficher un message d'erreur s'il y a une exception
+                    // ScaffoldMessenger.of(context).showSnackBar(
+                    //  SnackBar(
+                    //   content: Text('Erreur inattendue : $e'),
+                    // ),
+                    //);
+                    //}
+                  }
+                },
+                child: const Text('Se connecter'),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue,
+                  textStyle: TextStyle(fontSize: 16),
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ],
     );
   }
 }
