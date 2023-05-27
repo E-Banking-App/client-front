@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+<h1>Recharge de solde</h1>
+
+<form (ngSubmit)="processRecharge()">
+<div>
+  <label for="choix">Choisir une option :</label>
+  <select name="choix" id="choix" [(ngModel)]="choix">
+    <option value="internet">internet</option>
+    <option value="solde">solde</option>
+
+
+  </select>
+
+
+</div>
+  <div>
+    <label for="numeroTelephone">Numéro de téléphone :</label>
+    <input type="text" id="numeroTelephone" [(ngModel)]="numeroTelephone" required>
+  </div>
+
+  <div>
+    <label for="montant">Montant :</label>
+    <input type="text" id="montant" [(ngModel)]="montant" required>
+  </div>
+
+  <button type="submit">Recharger</button>
+</form>
+
+<p *ngIf="rechargeStatus">{{ rechargeStatus }}</p>
