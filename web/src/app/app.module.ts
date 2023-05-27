@@ -4,7 +4,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import {MatCardModule} from "@angular/material/card";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
@@ -17,7 +17,17 @@ import { FactureComponent } from './facture/facture.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserinfoComponent } from './userinfo/userinfo.component';
-import { PayementComponent } from './payement/payement.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import { RechargeComponent } from './recharge/recharge.component';
+import { DonationComponent } from './donation/donation.component';
+import { HistoriqueComponent } from './historique/historique.component';
+import { PayementpageComponent } from './payementpage/payementpage.component';
+import { RechargepageComponent } from './rechargepage/rechargepage.component';
+
+
+
+
 
 
 const routes: Routes = [
@@ -25,7 +35,20 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'facture', component: FactureComponent},
   { path: 'userinfo', component: UserinfoComponent},
-  { path: 'payment', component: PayementComponent}
+
+  { path: 'userinfo', component: UserinfoComponent},
+  { path: 'recharge', component: RechargeComponent},
+  { path: 'historique', component: HistoriqueComponent},
+  { path: 'facture', component: FactureComponent},
+  { path: 'payementpage', component: PayementpageComponent},
+  { path: 'recharge', component: RechargeComponent },
+  { path: 'rechargepage', component: RechargepageComponent },
+  { path: 'donation', component: DonationComponent },
+
+
+
+
+
 
 
 
@@ -38,7 +61,17 @@ const routes: Routes = [
     FactureComponent,
     NavbarComponent,
     UserinfoComponent,
-    PayementComponent,
+
+    RechargeComponent,
+    DonationComponent,
+    HistoriqueComponent,
+    PayementpageComponent,
+    RechargepageComponent,
+
+
+
+
+
 
   ],
   imports: [
@@ -53,7 +86,9 @@ const routes: Routes = [
     RouterOutlet,
     RouterModule.forRoot(routes),
     MatToolbarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
