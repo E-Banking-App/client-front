@@ -2,10 +2,14 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import 'main.dart';
+
 
 
 class DonationPage extends StatelessWidget {
   final String creancier;
+  
+  
 
   DonationPage({required this.creancier});
 
@@ -35,6 +39,8 @@ class DonationPage extends StatelessWidget {
 
 class DonationForm extends StatefulWidget {
   final String creancier;
+
+  
 
   DonationForm({required this.creancier});
 
@@ -77,12 +83,14 @@ class _DonationFormState extends State<DonationForm> {
       _formKey.currentState!.save();
 
       try {
+        String? email = GlobalData.email;
         // Send the donation request to the backend
         final response = await http.post(
           Uri.parse('BACKEND_URL'),
           body: {
             'creancier': widget.creancier,
             'amount': donationAmount.toString(),
+            'email ':email,
           },
         );
 
