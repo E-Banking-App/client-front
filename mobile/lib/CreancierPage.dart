@@ -1,11 +1,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:jabakallah/main.dart';
 import 'dart:convert';
+
 
 class CreancierPage extends StatelessWidget {
   final String creancier;
   final List<String> creances;
+
+  String? email = GlobalData.email;
 
   CreancierPage({required this.creancier, required this.creances});
 
@@ -396,7 +400,7 @@ void _showUnpaidInvoices(BuildContext context, String creancier, String creance,
               child: Text('Payer'),
               onPressed: () {
                 Navigator.pop(context);
-                _performPayment(context, creancier, creance, billAmount, password, referenceOrFactureNumber);
+                _performPayment(context, creancier, creance, billAmount, password, referenceOrFactureNumber,email!);
               },
             ),
           ],
@@ -405,12 +409,14 @@ void _showUnpaidInvoices(BuildContext context, String creancier, String creance,
     );
   }
 
-  void _performPayment(BuildContext context, String creancier, String creance, double amount, String password, String referenceOrFactureNumber) async {
+  void _performPayment(BuildContext context, String creancier, String creance, double amount, String password, String referenceOrFactureNumber,String email) async {
     try {
       // Make the HTTP request to validate the password and process the payment
       var response = await http.post(
         Uri.parse('https://your-backend-url.com/payment'),
         body: {
+
+          'email': email,
           'creancier': creancier,
           'creance': creance,
           'amount': amount.toString(),

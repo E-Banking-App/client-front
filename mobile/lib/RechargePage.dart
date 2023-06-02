@@ -3,6 +3,8 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import 'main.dart';
+
 // class RechargePage extends StatelessWidget {
 //   final String creancier;
 
@@ -25,6 +27,8 @@ import 'package:http/http.dart' as http;
 class RechargePage extends StatefulWidget {
   final String creancier;
 
+ 
+
   RechargePage({required this.creancier});
 
   @override
@@ -33,6 +37,7 @@ class RechargePage extends StatefulWidget {
 
 class _RechargePageState extends State<RechargePage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+   String? email = GlobalData.email;
   String? selectedOption;
   double? amount;
   String beneficiaryNumber = '';
@@ -75,7 +80,9 @@ class _RechargePageState extends State<RechargePage> {
     });
 
     // Prepare the request body
+    
     Map<String, dynamic> requestBody = {
+      'email': email,
       'creancier': widget.creancier,
       'option': selectedOption,
       'amount': amount,

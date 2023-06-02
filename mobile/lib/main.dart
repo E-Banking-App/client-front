@@ -6,10 +6,18 @@ import 'ChangePassword.dart';
 
 import 'Home.dart';
 
+class GlobalData {
+  static String? email;
+}
+
+
+
 
 void main() {
   runApp(MyApp());
 }
+
+
 
 class MyApp extends StatelessWidget {
   @override
@@ -43,7 +51,8 @@ class AuthentificationPageState extends State<AuthentificationPage> {
   // Les contrôleurs pour les champs de texte
   // final TextEditingController _nomController = TextEditingController();
   // final TextEditingController _prenomController = TextEditingController();
-  final TextEditingController _telephoneController = TextEditingController();
+  //final TextEditingController _telephoneController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passeController = TextEditingController();
   
 
@@ -53,6 +62,7 @@ class AuthentificationPageState extends State<AuthentificationPage> {
 
   final RegExp _phoneRegex = RegExp(r"^(?:\+212|0)(\d{9})$");
   final RegExp _nameRegex = RegExp(r"^[a-zA-ZÀ-ÿ\-]+$");
+  final RegExp _emailRegex = RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
 
   final _formKey = GlobalKey<FormState>(); // GlobalKey for the form
 
@@ -105,17 +115,17 @@ class AuthentificationPageState extends State<AuthentificationPage> {
               // ),
               const SizedBox(height: 16.0),
               TextFormField(
-                controller: _telephoneController,
+                controller: _emailController,
                 decoration: const InputDecoration(
-                  labelText: 'Téléphone',
+                  labelText: 'Email',
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Veuillez saisir un numéro de téléphone';
+                    return 'Veuillez saisir une adresse e-mail';
                   }
-                  if (!_phoneRegex.hasMatch(value)) {
-                    return 'Veuillez saisir un numéro de téléphone marocain valide';
+                  if (!_emailRegex.hasMatch(value)) {
+                    return 'Veuillez saisir une adresse e-mail valide';
                   }
                   return null;
                 },
@@ -170,7 +180,8 @@ class AuthentificationPageState extends State<AuthentificationPage> {
                     // Traitement des données saisies
                     // String nom = _nomController.text;
                     // String prenom = _prenomController.text;
-                    String telephone = _telephoneController.text;
+                    //String telephone = _telephoneController.text;
+                    String email = _emailController.text;
                     String passe = _passeController.text;
 
                     // Envoyer les données à un service d'ouverture de compte
@@ -182,7 +193,8 @@ class AuthentificationPageState extends State<AuthentificationPage> {
                     Map<String, dynamic> data = {
                       // 'nom': nom,
                       // 'prenom': prenom,
-                      'telephone': telephone,
+                      //'telephone': telephone,
+                      'email': email,
                       'passe': passe,
                     };
 
@@ -203,7 +215,8 @@ class AuthentificationPageState extends State<AuthentificationPage> {
                       ),
                     );
                     // Naviguer vers la page "Hello"
-                    bool isFirstLogin = true; // pour tester si ca marche 
+                    bool isFirstLogin = false; // pour tester si ca marche 
+                    GlobalData.email = email; // Stocker la variable email dans GlobalData
 
                    if (isFirstLogin) {
                    // Si c'est la première connexion, naviguer vers la page ChangePassword
