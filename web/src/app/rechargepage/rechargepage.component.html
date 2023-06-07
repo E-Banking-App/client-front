@@ -1,22 +1,30 @@
-<app-navbar></app-navbar>
-<H1>Choix de votre methode de payement:</H1>
-<a [routerLink]="['/recharge']">
 
-  <img src="../../assets/image1.png"alt="Clickable Image "/>
-
-</a>
 <br>
+ <H1>Choix de votre methode de payement:</H1> 
 
-<a [routerLink]="['/recharge']">
+<section class="creanciers-section">
+  <div class="container py-5">
+          <ng-container *ngFor="let creancier of creanciers; let i = index">
+              <div class="card text-black custom-card">
+                <a [routerLink]="['/recharge']">
+                  <img [src]="creancier.src" class="card-img" [alt]="creancier.title" />
+                </a>
+                  <div class="text-center mt-1">
+                    <h4 class="card-title">{{ creancier.title }}</h4>
+                    <h6 class="text-primary mb-1 pb-3">{{ creancier.description }}</h6>
+                  </div>
+                </div>
+              <div class="card text-black custom-card">
+                <a [routerLink]="['/recharge']">
+                  <img [src]="creancier.src" class="card-img" [alt]="creancier.title" />
+                </a>
+                  <div class="text-center mt-1">
+                    <h4 class="card-title">{{ creancier.title }}</h4>
+                    <h6 class="text-primary mb-1 pb-3">{{ creancier.description }}</h6>
+                  </div>
+              </div>
+          </ng-container>
+        </div>
 
-  <img src="../../assets/image2.jpeg"alt="Clickable Image"/>
-
-</a>
-<br>
-
-<a [routerLink]="['/recharge']">
-
-
-
-  <img src="../../assets/NBKtAP7j_400x400.png"/></a>
+</section>
 
