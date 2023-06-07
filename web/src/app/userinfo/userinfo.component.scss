@@ -2,21 +2,21 @@
 
 /* BASIC */
 
-html {
-  background-color: #56baed;
-}
+// html {
+//   background-color: #56baed;
+// }
 
-body {
-  font-family: "Poppins", sans-serif;
-  height: 100vh;
-}
+// body {
+//   font-family: "Poppins", sans-serif;
+//   height: 100vh;
+// }
 
-a {
-  color: #92badd;
-  display:inline-block;
-  text-decoration: none;
-  font-weight: 400;
-}
+// a {
+//   color: #92badd;
+//   display:inline-block;
+//   text-decoration: none;
+//   font-weight: 400;
+// }
 
 h2 {
   text-align: center;
@@ -68,14 +68,14 @@ h2 {
 
 h2.color {
   color: #0d0d0d;
-  border-bottom: 2px solid #5fbae9;
+  border-bottom: 2px solid #6050DC;
 }
 
 
 /* FORM TYPOGRAPHY*/
 
-input[type=button], input[type=submit], input[type=reset]  {
-  background-color: #56baed;
+input[type=button], input[type=submit] {
+  background-color: #6050DC;;
   border: none;
   color: white;
   padding: 15px 80px;
@@ -84,8 +84,8 @@ input[type=button], input[type=submit], input[type=reset]  {
   display: inline-block;
   text-transform: uppercase;
   font-size: 13px;
-  -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  -webkit-box-shadow: 0 10px 30px 0 rgba(163, 111, 248, 0.4);
+  box-shadow: 0 10px 30px 0 rgba(163, 111, 248, 0.4);
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
   margin: 5px 20px 40px 20px;
@@ -96,11 +96,11 @@ input[type=button], input[type=submit], input[type=reset]  {
   transition: all 0.3s ease-in-out;
 }
 
-input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: #39ace7;
+input[type=button]:hover, input[type=submit]:hover  {
+  background-color: #6050DC;;
 }
 
-input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+input[type=button]:active, input[type=submit]:active  {
   -moz-transform: scale(0.95);
   -webkit-transform: scale(0.95);
   -o-transform: scale(0.95);
@@ -108,30 +108,30 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-input[type=email] {
-  background-color: #f6f6f6;
-  border: none;
-  color: #0d0d0d;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 5px;
-  width: 85%;
-  border: 2px solid #f6f6f6;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-  -webkit-border-radius: 5px 5px 5px 5px;
-  border-radius: 5px 5px 5px 5px;
-}
+// input[type=email] {
+//   background-color: #f6f6f6;
+//   border: none;
+//   color: #0d0d0d;
+//   padding: 15px 32px;
+//   text-align: center;
+//   text-decoration: none;
+//   display: inline-block;
+//   font-size: 16px;
+//   margin: 5px;
+//   width: 85%;
+//   border: 2px solid #f6f6f6;
+//   -webkit-transition: all 0.5s ease-in-out;
+//   -moz-transition: all 0.5s ease-in-out;
+//   -ms-transition: all 0.5s ease-in-out;
+//   -o-transition: all 0.5s ease-in-out;
+//   transition: all 0.5s ease-in-out;
+//   -webkit-border-radius: 5px 5px 5px 5px;
+//   border-radius: 5px 5px 5px 5px;
+// }
 
-input[type=text]:focus {
+input[type=text],input[type=submit] :focus {
   background-color: #fff;
-  border-bottom: 2px solid #5fbae9;
+  border-bottom: 2px solid #6050DC;
 }
 
 
@@ -139,7 +139,7 @@ input[type=password] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
-  padding: 15px 32px;
+  padding: 15px 28px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -147,18 +147,18 @@ input[type=password] {
   margin: 5px;
   width: 85%;
   border: 2px solid #f6f6f6;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
 }
 
 input[type=password]:focus {
   background-color: #fff;
-  border-bottom: 2px solid #5fbae9;
+  border-bottom: 2px solid #6050DC;
 }
 
 
@@ -168,8 +168,8 @@ input[type=password]:focus {
 .fadeInDown {
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
+  -webkit-animation-duration: 0.1s;
+  animation-duration: 0.1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
@@ -191,61 +191,61 @@ input[type=password]:focus {
   -moz-animation-fill-mode:forwards;
   animation-fill-mode:forwards;
 
-  -webkit-animation-duration:1s;
-  -moz-animation-duration:1s;
-  animation-duration:1s;
+  -webkit-animation-duration:0.5s;
+  -moz-animation-duration:0.5s;
+  animation-duration:0.5s;
 }
+
+// .fadeIn.first {
+//   -webkit-animation-delay: 0.4s;
+//   -moz-animation-delay: 0.4s;
+//   animation-delay: 0.4s;
+// }
+
+// .fadeIn.second {
+//   -webkit-animation-delay: 0.6s;
+//   -moz-animation-delay: 0.6s;
+//   animation-delay: 0.6s;
+// }
 
 .fadeIn.first {
-  -webkit-animation-delay: 0.4s;
-  -moz-animation-delay: 0.4s;
-  animation-delay: 0.4s;
-}
-
-.fadeIn.second {
-  -webkit-animation-delay: 0.6s;
-  -moz-animation-delay: 0.6s;
-  animation-delay: 0.6s;
-}
-
-.fadeIn.third {
   -webkit-animation-delay: 0.8s;
   -moz-animation-delay: 0.8s;
   animation-delay: 0.8s;
 }
 
-.fadeIn.fourth {
-  -webkit-animation-delay: 1s;
-  -moz-animation-delay: 1s;
-  animation-delay: 1s;
+.fadeIn.second{
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  animation-delay: 0.5s;
 }
 
-/* Simple CSS3 Fade-in Animation */
-.underlineHover:after {
-  display: block;
-  left: 0;
-  bottom: -10px;
-  width: 0;
-  height: 2px;
-  background-color: #56baed;
-  content: "";
-  transition: width 0.2s;
-}
+// /* Simple CSS3 Fade-in Animation */
+// .underlineHover:after {
+//   display: block;
+//   left: 0;
+//   bottom: -10px;
+//   width: 0;
+//   height: 2px;
+//   background-color: #56baed;
+//   content: "";
+//   transition: width 0.2s;
+// }
 
-.underlineHover:hover {
-  color: #0d0d0d;
-}
+// .underlineHover:hover {
+//   color: #0d0d0d;
+// }
 
-.underlineHover:hover:after{
-  width: 100%;
-}
+// .underlineHover:hover:after{
+//   width: 100%;
+// }
 
-/* OTHERS */
+// /* OTHERS */
 
-*:focus {
-  outline: none;
-}
+// *:focus {
+//   outline: none;
+// }
 
-* {
-  box-sizing: border-box;
-}
+// * {
+//   box-sizing: border-box;
+// }

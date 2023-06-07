@@ -25,7 +25,7 @@
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
   
-  .custom-card {
+  .creancier-card {
     padding: 10px;
   }
   
@@ -53,42 +53,9 @@
     padding-bottom: 1rem;
   }
   
-  .p-3 {
-    padding: 1rem;
-  }
-  
-  .mx-n3 {
-    margin-left: -1rem;
-    margin-right: -1rem;
-  }
-  
-  .mb-4 {
-    margin-bottom: 1.5rem;
-  }
-  
   .h1 {
     font-size: 2.5rem;
     font-weight: bold;
   }
   
-  ul.list-unstyled {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  ul.list-unstyled li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .d-flex {
-    display: flex;
-  }
-  
-  .flex-column {
-    flex-direction: column;
-  }
-  
-  .flex-fill {
-    flex: 1;
-  }
-  
+
