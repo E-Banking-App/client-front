@@ -15,6 +15,7 @@ export class UserinfoComponent implements OnInit{
 
   onConfirmClick() {
     if (this.userPassword !== this.confirmPassword) {
+      
       alert('Les mots de passe ne correspondent pas.');
     } else {
       // update password ?

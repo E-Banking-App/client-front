@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./donation.component.scss']
 })
 export class DonationComponent {
+
   montant: number| undefined;
   nom: string| undefined;
   donationStatus: string| undefined;

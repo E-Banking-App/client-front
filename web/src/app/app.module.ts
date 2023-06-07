@@ -24,6 +24,9 @@ import { DonationComponent } from './donation/donation.component';
 import { HistoriqueComponent } from './historique/historique.component';
 import { PayementpageComponent } from './payementpage/payementpage.component';
 import { RechargepageComponent } from './rechargepage/rechargepage.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+
+
 
 
 
@@ -68,6 +71,7 @@ const routes: Routes = [
     PayementpageComponent,
     RechargepageComponent,
 
+  
 
 
 
@@ -88,7 +92,9 @@ const routes: Routes = [
     MatToolbarModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatGridListModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

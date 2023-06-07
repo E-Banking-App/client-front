@@ -1,18 +1,18 @@
-<app-navbar></app-navbar>
-<h1>Page de donation</h1>
 
-<form (ngSubmit)="processDonation()">
-  <div>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+
+    <h1 class="color"> Page de donation </h1>
+<form >
     <label for="montant">Montant :</label>
-    <input type="text" id="montant" [(ngModel)]="montant" required>
-  </div>
-
-  <div>
+    <input type="text" id="montant" class="fadenIn first" [(ngModel)]="montant" required>
+  
     <label for="nom">Nom :</label>
-    <input type="text" id="nom" [(ngModel)]="nom" required>
-  </div>
+    <input type="text" id="nom"   class="fadenIn first" [(ngModel)]="nom" required>
 
-  <button type="submit">Faire un don</button>
+    <button type="submit"   class="fadenIn second">Faire un don</button>
 </form>
 
 <p *ngIf="donationStatus">{{ donationStatus }}</p>
+</div>
+</div>
