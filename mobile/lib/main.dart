@@ -6,6 +6,9 @@ import 'ChangePassword.dart';
 
 import 'Home.dart';
 
+class GlobalData {
+  static String? email;
+}
 
 void main() {
   runApp(MyApp());
@@ -43,16 +46,16 @@ class AuthentificationPageState extends State<AuthentificationPage> {
   // Les contrôleurs pour les champs de texte
   // final TextEditingController _nomController = TextEditingController();
   // final TextEditingController _prenomController = TextEditingController();
-  final TextEditingController _telephoneController = TextEditingController();
+  //final TextEditingController _telephoneController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passeController = TextEditingController();
-  
 
   //final TextEditingController _nouveauPasseController = TextEditingController();
   //final TextEditingController _confirmerNouveauPasseController = TextEditingController();
 
-
   final RegExp _phoneRegex = RegExp(r"^(?:\+212|0)(\d{9})$");
   final RegExp _nameRegex = RegExp(r"^[a-zA-ZÀ-ÿ\-]+$");
+  final RegExp _emailRegex = RegExp(r"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$");
 
   final _formKey = GlobalKey<FormState>(); // GlobalKey for the form
 
@@ -105,17 +108,17 @@ class AuthentificationPageState extends State<AuthentificationPage> {
               // ),
               const SizedBox(height: 16.0),
               TextFormField(
-                controller: _telephoneController,
+                controller: _emailController,
                 decoration: const InputDecoration(
-                  labelText: 'Téléphone',
+                  labelText: 'Email',
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Veuillez saisir un numéro de téléphone';
+                    return 'Veuillez saisir une adresse e-mail';
                   }
-                  if (!_phoneRegex.hasMatch(value)) {
-                    return 'Veuillez saisir un numéro de téléphone marocain valide';
+                  if (!_emailRegex.hasMatch(value)) {
+                    return 'Veuillez saisir une adresse e-mail valide';
                   }
                   return null;
                 },
@@ -130,38 +133,38 @@ class AuthentificationPageState extends State<AuthentificationPage> {
               // ),
               const SizedBox(height: 32.0),
               TextFormField(
-            controller: _passeController,
-            decoration: const InputDecoration(
-              labelText: 'Mot de passe',
-              border: OutlineInputBorder(),
-            ),
-          ),
-          // const SizedBox(height: 16.0),
-          // TextFormField(
-          //   controller: _nouveauPasseController,
-          //   decoration: const InputDecoration(
-          //     labelText: 'Nouveau mot de passe',
-          //     border: OutlineInputBorder(),
-          //   ),
-          // ),
-          // const SizedBox(height: 16.0),
-          // TextFormField(
-          //   controller: _confirmerNouveauPasseController,
-          //   decoration: const InputDecoration(
-          //     labelText: 'Confirmer nouveau mot de passe',
-          //     border: OutlineInputBorder(),
-          //   ),
-          //   validator: (value) {
-          //     if (value == null || value.isEmpty) {
-          //       return 'Veuillez confirmer le nouveau mot de passe';
-          //     }
-          //     if (value != _nouveauPasseController.text) {
-          //       return 'Les mots de passe ne correspondent pas';
-          //     }
-          //     return null;
-          //   },
-          // ),
-          const SizedBox(height: 16.0),
+                controller: _passeController,
+                decoration: const InputDecoration(
+                  labelText: 'Mot de passe',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              // const SizedBox(height: 16.0),
+              // TextFormField(
+              //   controller: _nouveauPasseController,
+              //   decoration: const InputDecoration(
+              //     labelText: 'Nouveau mot de passe',
+              //     border: OutlineInputBorder(),
+              //   ),
+              // ),
+              // const SizedBox(height: 16.0),
+              // TextFormField(
+              //   controller: _confirmerNouveauPasseController,
+              //   decoration: const InputDecoration(
+              //     labelText: 'Confirmer nouveau mot de passe',
+              //     border: OutlineInputBorder(),
+              //   ),
+              //   validator: (value) {
+              //     if (value == null || value.isEmpty) {
+              //       return 'Veuillez confirmer le nouveau mot de passe';
+              //     }
+              //     if (value != _nouveauPasseController.text) {
+              //       return 'Les mots de passe ne correspondent pas';
+              //     }
+              //     return null;
+              //   },
+              // ),
+              const SizedBox(height: 16.0),
               // Le bouton pour soumettre le formulaire
               ElevatedButton(
                 onPressed: () {
@@ -170,25 +173,25 @@ class AuthentificationPageState extends State<AuthentificationPage> {
                     // Traitement des données saisies
                     // String nom = _nomController.text;
                     // String prenom = _prenomController.text;
-                    String telephone = _telephoneController.text;
+                    //String telephone = _telephoneController.text;
+                    String email = _emailController.text;
                     String passe = _passeController.text;
 
                     // Envoyer les données à un service d'ouverture de compte
                     //try {
                     // Créer une instance de Dio
-                    
 
                     // Définir les données à envoyer dans la requête
                     Map<String, dynamic> data = {
                       // 'nom': nom,
                       // 'prenom': prenom,
-                      'telephone': telephone,
+                      //'telephone': telephone,
+                      'email': email,
                       'passe': passe,
                     };
 
                     // Envoyer la requête POST avec les données
                     //String url = 'https://mon-service.com/authentification';
-                    
 
                     //http.Response response = await http.post(Uri.parse(url), body: data);
                     //Map<String, dynamic> responseData = json.decode(response.body);
@@ -204,14 +207,23 @@ class AuthentificationPageState extends State<AuthentificationPage> {
                     );
                     // Naviguer vers la page "Hello"
                     bool isFirstLogin = false; // pour tester si ca marche
+                    GlobalData.email =
+                        email; // Stocker la variable email dans GlobalData
 
-                   if (isFirstLogin) {
-                   // Si c'est la première connexion, naviguer vers la page ChangePassword
-                            Navigator.push(context,MaterialPageRoute(builder: (context) => ChangePassword()),);}
-                    else {
-                     // Sinon, naviguer vers la page Home
-                          Navigator.push(context,MaterialPageRoute(builder: (context) => Home()),);
-                         }
+                    if (isFirstLogin) {
+                      // Si c'est la première connexion, naviguer vers la page ChangePassword
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ChangePassword()),
+                      );
+                    } else {
+                      // Sinon, naviguer vers la page Home
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Home()),
+                      );
+                    }
                     //} else {
                     // Sinon, afficher un message d'erreur avec le code de réponse HTTP
                     //  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Compte non existant '),),);

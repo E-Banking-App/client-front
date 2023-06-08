@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import 'Home.dart';
+import 'main.dart';
 
 
 
@@ -16,6 +17,8 @@ class _PasswordChangePageState extends State<ChangePassword> {
   final _confirmPasswordController = TextEditingController();
   bool _isLoading = false;
   String _errorMessage = '';
+
+   String? email = GlobalData.email;
 
   @override
   void dispose() {
@@ -32,6 +35,8 @@ class _PasswordChangePageState extends State<ChangePassword> {
       });
 
       final newPassword = _newPasswordController.text;
+      
+
 
       try {
         // Make the HTTP request to change the password
@@ -39,6 +44,7 @@ class _PasswordChangePageState extends State<ChangePassword> {
           Uri.parse('https://your-backend-url.com/change-password'),
           body: {
             'newPassword': newPassword,
+            'email ':email
           },
         );
 

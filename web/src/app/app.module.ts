@@ -4,7 +4,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import {MatCardModule} from "@angular/material/card";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
@@ -29,6 +29,26 @@ const routes: Routes = [
   { path: 'facture', component: FactureComponent, canActivate: [AuthGuardGuard]},
   { path: 'userinfo', component: UserinfoComponent, canActivate: [AuthGuardGuard]},
   { path: 'payment', component: PayementComponent, canActivate: [AuthGuardGuard]}
+  { path: 'home', component: HomeComponent},
+  { path: 'facture', component: FactureComponent},
+  { path: 'userinfo', component: UserinfoComponent},
+
+  { path: 'userinfo', component: UserinfoComponent},
+  { path: 'recharge', component: RechargeComponent},
+  { path: 'historique', component: HistoriqueComponent},
+  { path: 'facture', component: FactureComponent},
+  { path: 'payementpage', component: PayementpageComponent},
+  { path: 'recharge', component: RechargeComponent },
+  { path: 'rechargepage', component: RechargepageComponent },
+  { path: 'donation', component: DonationComponent },
+
+
+
+
+
+
+
+
 ];
 
 @NgModule({
@@ -55,7 +75,10 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     MatToolbarModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    MatGridListModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

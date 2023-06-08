@@ -1,2 +1,16 @@
-<app-navbar></app-navbar>
-<p>TODO userinfo</p>
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    
+    <!-- Tab Title -->
+    <h2 class="color"> Change Password </h2>
+
+    <!-- Login Form -->
+    <form>
+
+      <input type="password" id="password" class="fadeIn first" [(ngModel)]="userPassword" name="userPassword" placeholder="New password" required>
+      <input type="password" id="password" class="fadeIn first" [(ngModel)]="confirmPassword"  name="confirmPassword" placeholder="Confirm password" required>
+      <input type="submit" class="fadeIn second" (click)="onConfirmClick()" value="Confirm">
+    </form>
+  </div>
+</div>

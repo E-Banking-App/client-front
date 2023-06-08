@@ -1,24 +1,50 @@
+/* donation.component.css */
+
+// h1 {
+//   text-align: center;
+// }
+
+// form {
+//   width: 400px;
+//   margin: 0 auto;
+// }
+
+// div {
+//   margin-bottom: 10px;
+// }
+
+// label {
+//   display: block;
+//   font-weight: bold;
+// }
+
+// input[type="text"] {
+//   width: 100%;
+//   padding: 5px;
+// }
+
+// button[type="submit"] {
+//   display: block;
+//   width: 100%;
+//   padding: 10px;
+//   background-color: #007bff;
+//   color: #fff;
+//   border: none;
+//   cursor: pointer;
+// }
+
+// p {
+//   text-align: center;
+//   margin-top: 10px;
+//   font-weight: bold;
+// }
+
+
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 
 /* BASIC */
 
-// html {
-//   background-color: #56baed;
-// }
-
-// body {
-//   font-family: "Poppins", sans-serif;
-//   height: 100vh;
-// }
-
-// a {
-//   color: #92badd;
-//   display:inline-block;
-//   text-decoration: none;
-//   font-weight: 400;
-// }
-
-h2 {
+h1 {
   text-align: center;
   font-size: 16px;
   font-weight: 600;
@@ -66,7 +92,7 @@ h2 {
 
 /* title */
 
-h2.color {
+h1.color {
   color: #0d0d0d;
   border-bottom: 2px solid #6050DC;
 }
@@ -74,8 +100,8 @@ h2.color {
 
 /* FORM TYPOGRAPHY*/
 
-input[type=button], input[type=submit] {
-  background-color: #6050DC;;
+button[type=submit] {
+  background-color:#6050DC;
   border: none;
   color: white;
   padding: 15px 80px;
@@ -96,11 +122,11 @@ input[type=button], input[type=submit] {
   transition: all 0.3s ease-in-out;
 }
 
-input[type=button]:hover, input[type=submit]:hover  {
-  background-color: #6050DC;;
+button[type=submit]:hover  {
+  background-color: #6050DC;
 }
 
-input[type=button]:active, input[type=submit]:active  {
+button[type=submit]:active  {
   -moz-transform: scale(0.95);
   -webkit-transform: scale(0.95);
   -o-transform: scale(0.95);
@@ -108,34 +134,11 @@ input[type=button]:active, input[type=submit]:active  {
   transform: scale(0.95);
 }
 
-// input[type=email] {
-//   background-color: #f6f6f6;
-//   border: none;
-//   color: #0d0d0d;
-//   padding: 15px 32px;
-//   text-align: center;
-//   text-decoration: none;
-//   display: inline-block;
-//   font-size: 16px;
-//   margin: 5px;
-//   width: 85%;
-//   border: 2px solid #f6f6f6;
-//   -webkit-transition: all 0.5s ease-in-out;
-//   -moz-transition: all 0.5s ease-in-out;
-//   -ms-transition: all 0.5s ease-in-out;
-//   -o-transition: all 0.5s ease-in-out;
-//   transition: all 0.5s ease-in-out;
-//   -webkit-border-radius: 5px 5px 5px 5px;
-//   border-radius: 5px 5px 5px 5px;
-// }
-
-input[type=text],input[type=submit] :focus {
+label,input[type=text],button[type=submit] :focus {
   background-color: #fff;
   border-bottom: 2px solid #6050DC;
 }
-
-
-input[type=password] {
+input[type=text]{
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
@@ -147,18 +150,13 @@ input[type=password] {
   margin: 5px;
   width: 85%;
   border: 2px solid #f6f6f6;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
-  -ms-transition: all 0.2s ease-in-out;
-  -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
-}
-
-input[type=password]:focus {
-  background-color: #fff;
-  border-bottom: 2px solid #6050DC;
 }
 
 
@@ -168,12 +166,11 @@ input[type=password]:focus {
 .fadeInDown {
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
-  -webkit-animation-duration: 0.1s;
-  animation-duration: 0.1s;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
-
 
 
 /* Simple CSS3 Fade-in Animation */
@@ -191,22 +188,10 @@ input[type=password]:focus {
   -moz-animation-fill-mode:forwards;
   animation-fill-mode:forwards;
 
-  -webkit-animation-duration:0.5s;
-  -moz-animation-duration:0.5s;
-  animation-duration:0.5s;
+  -webkit-animation-duration:1s;
+  -moz-animation-duration:1s;
+  animation-duration:1s;
 }
-
-// .fadeIn.first {
-//   -webkit-animation-delay: 0.4s;
-//   -moz-animation-delay: 0.4s;
-//   animation-delay: 0.4s;
-// }
-
-// .fadeIn.second {
-//   -webkit-animation-delay: 0.6s;
-//   -moz-animation-delay: 0.6s;
-//   animation-delay: 0.6s;
-// }
 
 .fadeIn.first {
   -webkit-animation-delay: 0.8s;
@@ -215,37 +200,7 @@ input[type=password]:focus {
 }
 
 .fadeIn.second{
-  -webkit-animation-delay: 0.5s;
-  -moz-animation-delay: 0.5s;
-  animation-delay: 0.5s;
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  animation-delay: 1s;
 }
-
-// /* Simple CSS3 Fade-in Animation */
-// .underlineHover:after {
-//   display: block;
-//   left: 0;
-//   bottom: -10px;
-//   width: 0;
-//   height: 2px;
-//   background-color: #56baed;
-//   content: "";
-//   transition: width 0.2s;
-// }
-
-// .underlineHover:hover {
-//   color: #0d0d0d;
-// }
-
-// .underlineHover:hover:after{
-//   width: 100%;
-// }
-
-// /* OTHERS */
-
-// *:focus {
-//   outline: none;
-// }
-
-// * {
-//   box-sizing: border-box;
-// }
