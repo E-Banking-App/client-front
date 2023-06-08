@@ -183,8 +183,11 @@ class CreancierPage extends StatelessWidget {
     try {
       // Make the HTTP request to fetch the bill amount
       var response = await http.get(
-        Uri.parse('https://your-backend-url.com/facture?creancier=$creancier&creance=$creance&factureNumber=$factureNumber'),
-      );
+  Uri.parse('https://your-backend-url.com/facture?creancier=$creancier&creance=$creance&factureNumber=$factureNumber'),
+  headers: {
+    'Authorization': 'Bearer ${GlobalData.authToken}',
+  },
+);
 
       if (response.statusCode == 200) {
         // Parse the response body to get the bill amount
@@ -260,8 +263,11 @@ class CreancierPage extends StatelessWidget {
     try {
       // Make the HTTP request to fetch the unpaid invoices based on the reference ID
       var response = await http.get(
-        Uri.parse('https://your-backend-url.com/unpaid-invoices?creancier=$creancier&creance=$creance&referenceId=$referenceId'),
-      );
+  Uri.parse('https://your-backend-url.com/unpaid-invoices?creancier=$creancier&creance=$creance&referenceId=$referenceId'),
+  headers: {
+    'Authorization': 'Bearer ${GlobalData.authToken}',
+  },
+);
 
       if (response.statusCode == 200) {
         // Parse the response body to get the list of unpaid invoices
@@ -411,19 +417,23 @@ void _showUnpaidInvoices(BuildContext context, String creancier, String creance,
 
   void _performPayment(BuildContext context, String creancier, String creance, double amount, String password, String referenceOrFactureNumber,String email) async {
     try {
+      String? id = GlobalData.id;
       // Make the HTTP request to validate the password and process the payment
       var response = await http.post(
-        Uri.parse('https://your-backend-url.com/payment'),
-        body: {
-
-          'email': email,
-          'creancier': creancier,
-          'creance': creance,
-          'amount': amount.toString(),
-          'password': password,
-          'referenceOrFactureNumber': referenceOrFactureNumber,
-        },
-      );
+  Uri.parse('https://your-backend-url.com/payment'),
+  headers: {
+    'Authorization': 'Bearer ${GlobalData.authToken}',
+    'Content-Type': 'application/json',
+  },
+  body: jsonEncode({
+    'idclient': id,
+    'creancier': creancier,
+    'creance': creance,
+    'amount': amount.toString(),
+    'password': password,
+    'referenceOrFactureNumber': referenceOrFactureNumber,
+  }),
+);
 
       if (response.statusCode == 200) {
         // Payment success
