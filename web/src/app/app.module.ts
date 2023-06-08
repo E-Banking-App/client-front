@@ -17,30 +17,38 @@ import { FactureComponent } from './facture/facture.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserinfoComponent } from './userinfo/userinfo.component';
-import { PayementComponent } from './payement/payement.component';
 
-import {HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { RechargeComponent } from './recharge/recharge.component';
+import { DonationComponent } from './donation/donation.component';
+import { HistoriqueComponent } from './historique/historique.component';
+import { PayementpageComponent } from './payementpage/payementpage.component';
+import { RechargepageComponent } from './rechargepage/rechargepage.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+
+
+
 import { AuthGuardGuard } from './guards/auth-guard.guard';
+
+
+
+
 
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuardGuard]},
+  { path: 'home', component: HomeComponent},
   { path: 'facture', component: FactureComponent, canActivate: [AuthGuardGuard]},
   { path: 'userinfo', component: UserinfoComponent, canActivate: [AuthGuardGuard]},
-  { path: 'payment', component: PayementComponent, canActivate: [AuthGuardGuard]}
-  { path: 'home', component: HomeComponent},
-  { path: 'facture', component: FactureComponent},
-  { path: 'userinfo', component: UserinfoComponent},
 
-  { path: 'userinfo', component: UserinfoComponent},
-  { path: 'recharge', component: RechargeComponent},
-  { path: 'historique', component: HistoriqueComponent},
-  { path: 'facture', component: FactureComponent},
-  { path: 'payementpage', component: PayementpageComponent},
-  { path: 'recharge', component: RechargeComponent },
-  { path: 'rechargepage', component: RechargepageComponent },
-  { path: 'donation', component: DonationComponent },
+  { path: 'userinfo', component: UserinfoComponent, canActivate: [AuthGuardGuard]},
+  { path: 'recharge', component: RechargeComponent, canActivate: [AuthGuardGuard]},
+  { path: 'historique', component: HistoriqueComponent, canActivate: [AuthGuardGuard]},
+  { path: 'facture', component: FactureComponent, canActivate: [AuthGuardGuard]},
+  { path: 'payementpage', component: PayementpageComponent, canActivate: [AuthGuardGuard]},
+  { path: 'recharge', component: RechargeComponent, canActivate: [AuthGuardGuard] },
+  { path: 'rechargepage', component: RechargepageComponent, canActivate: [AuthGuardGuard] },
+  { path: 'donation', component: DonationComponent, canActivate: [AuthGuardGuard] },
 
 
 
@@ -50,7 +58,6 @@ const routes: Routes = [
 
 
 ];
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +66,18 @@ const routes: Routes = [
     FactureComponent,
     NavbarComponent,
     UserinfoComponent,
-    PayementComponent,
+
+    RechargeComponent,
+    DonationComponent,
+    HistoriqueComponent,
+    PayementpageComponent,
+    RechargepageComponent,
+
+
+
+
+
+
 
   ],
   imports: [
