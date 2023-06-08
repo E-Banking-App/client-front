@@ -85,17 +85,17 @@ class _DonationFormState extends State<DonationForm> {
       _formKey.currentState!.save();
 
       try {
-        String? id = GlobalData.id;
+        String? email = GlobalData.email;
         // Send the donation request to the backend
         final requestData = {
                   'creancier': widget.creancier,
                   'amount': donationAmount.toString(),
-                    'id': id,
+                  'email': email,
                };
 
               final jsonData = jsonEncode(requestData);
 
-          final response = await http.post(Uri.parse('BACKEND_URL'),
+          final response = await http.post(Uri.parse('http://localhost:8082/donation/mobile'),
                                headers: {
                                    'Content-Type': 'application/json',
                                     'Authorization': 'Bearer ${GlobalData.authToken}',
