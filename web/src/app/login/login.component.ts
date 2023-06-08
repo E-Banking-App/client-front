@@ -24,10 +24,17 @@ export class LoginComponent {
       console.log(this.LoginForm.value);
       this.api.postLogIn(this.LoginForm.value).subscribe({
         next: (result : any) => {
-          console.log("Admin Sign In Successfully", result);
+          console.log("User Sign In Successfully", result);
           localStorage.setItem('token', result.token);
           this.LoginForm.reset()
-          this.router.navigate(['/home']);
+
+          // Redirection vers la page de changement de mot de passe
+          if (result.isFirstLogin == true){
+            this.router.navigateByUrl('/password');
+          }
+          else{
+            this.router.navigateByUrl('/home');
+          }
         },
         error: (err: any)=> {
           console.error("Something went wrong", err)

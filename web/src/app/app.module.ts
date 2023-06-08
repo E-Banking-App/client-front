@@ -29,6 +29,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 
 import { AuthGuardGuard } from './guards/auth-guard.guard';
+import { PasswordComponent } from './password/password.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 
 
@@ -40,7 +42,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'facture', component: FactureComponent, canActivate: [AuthGuardGuard]},
   { path: 'userinfo', component: UserinfoComponent, canActivate: [AuthGuardGuard]},
-
+  { path: 'password', component: PasswordComponent,canActivate: [AuthGuardGuard]},
   { path: 'userinfo', component: UserinfoComponent, canActivate: [AuthGuardGuard]},
   { path: 'recharge', component: RechargeComponent, canActivate: [AuthGuardGuard]},
   { path: 'historique', component: HistoriqueComponent, canActivate: [AuthGuardGuard]},
@@ -49,6 +51,7 @@ const routes: Routes = [
   { path: 'recharge', component: RechargeComponent, canActivate: [AuthGuardGuard] },
   { path: 'rechargepage', component: RechargepageComponent, canActivate: [AuthGuardGuard] },
   { path: 'donation', component: DonationComponent, canActivate: [AuthGuardGuard] },
+  { path: '**', component: NotfoundComponent,canActivate: [AuthGuardGuard] },
 
 
 
@@ -72,6 +75,8 @@ const routes: Routes = [
     HistoriqueComponent,
     PayementpageComponent,
     RechargepageComponent,
+    PasswordComponent,
+    NotfoundComponent,
 
 
 

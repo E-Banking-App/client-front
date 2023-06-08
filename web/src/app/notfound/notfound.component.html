@@ -1,0 +1,24 @@
+
+<!-- <div>
+    <h1>Oops! Page Not Found</h1>
+    <p>Sorry, but the page you are looking for could not be found.</p>
+    <p>Click here to be redirected to the <a href="/home">homepage</a> .</p>
+
+</div> -->
+<title>Page Not Found</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+<body>
+<div class="not-found-container">
+  <span class="material-icons not-found-icon">error_outline</span>
+  <h2 class="not-found-heading">Oops! Page Not Found</h2>
+  <p class="not-found-message">Sorry, but the page you are looking for could not be found.</p>
+  <p class="not-found-message">Click here to be redirected to the <a href="/home" class="not-found-link">homepage</a> .</p>
+</div>
+
+<script>
+  setTimeout(function() {
+    window.location.replace("/home");
+  }, 5000); // Redirect after 5 seconds
+</script>
+</body>
