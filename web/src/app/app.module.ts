@@ -38,8 +38,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
 
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'home', component: HomeComponent},
+  { path: '', component: LoginComponent,},
+  { path: 'home', component: HomeComponent,canActivate: [AuthGuardGuard]},
   { path: 'facture', component: FactureComponent, canActivate: [AuthGuardGuard]},
   { path: 'userinfo', component: UserinfoComponent, canActivate: [AuthGuardGuard]},
   { path: 'password', component: PasswordComponent,canActivate: [AuthGuardGuard]},
