@@ -19,17 +19,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserinfoComponent } from './userinfo/userinfo.component';
 import { PayementComponent } from './payement/payement.component';
 
+import {HttpClientModule} from '@angular/common/http'
+import { AuthGuardGuard } from './guards/auth-guard.guard';
+
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'home', component: HomeComponent},
-  { path: 'facture', component: FactureComponent},
-  { path: 'userinfo', component: UserinfoComponent},
-  { path: 'payment', component: PayementComponent}
-
-
-
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuardGuard]},
+  { path: 'facture', component: FactureComponent, canActivate: [AuthGuardGuard]},
+  { path: 'userinfo', component: UserinfoComponent, canActivate: [AuthGuardGuard]},
+  { path: 'payment', component: PayementComponent, canActivate: [AuthGuardGuard]}
 ];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,8 @@ const routes: Routes = [
     RouterOutlet,
     RouterModule.forRoot(routes),
     MatToolbarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

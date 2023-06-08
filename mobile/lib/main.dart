@@ -203,7 +203,7 @@ class AuthentificationPageState extends State<AuthentificationPage> {
                       ),
                     );
                     // Naviguer vers la page "Hello"
-                    bool isFirstLogin = true; // pour tester si ca marche 
+                    bool isFirstLogin = false; // pour tester si ca marche
 
                    if (isFirstLogin) {
                    // Si c'est la première connexion, naviguer vers la page ChangePassword
