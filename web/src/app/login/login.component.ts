@@ -15,32 +15,48 @@ export class LoginComponent {
   constructor(private api: LoginService, private router: Router) { }
 
   LoginForm = new FormGroup({
-    phonenumber: new FormControl('', [Validators.required, Validators.minLength(10)]),
+    username: new FormControl('', [Validators.required, Validators.minLength(10)]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)])
   })
 
   onSubmit() {
     if(this.LoginForm.valid) {
+
       console.log(this.LoginForm.value);
-      this.api.postLogIn(this.LoginForm.value).subscribe({
-        next: (result : any) => {
-          console.log("User Sign In Successfully", result);
-          localStorage.setItem('token', result.token);
-          this.LoginForm.reset()
+      this.api.postLogIn(this.LoginForm.value).subscribe(
+        response => {
+          console.log('Client Authenticate:', response);
+          // Handle success if needed
+
+          // Assuming the token is returned as 'token' in the response
+          const token = response.token;
+          console.log(token)
+          localStorage.setItem('token', token);//stock the token
+          localStorage.setItem('id', response.id)
 
           // Redirection vers la page de changement de mot de passe
-          if (result.isFirstLogin == true){
+          if (response.isFirstLogin == true){
             this.router.navigateByUrl('/password');
           }
           else{
             this.router.navigateByUrl('/home');
           }
         },
-        error: (err: any)=> {
-          console.error("Something went wrong", err)
+
+        error => {
+          console.error('Error Authenticate client:', error);
+          // Handle error if needed
+
         }
-      })
+      );
+
+      console.log(this.LoginForm.value);
     }
+
+    // if (this.firstLogin) {
+    //   // Redirection vers la page de changement de mot de passe
+    //   this.router.navigateByUrl('/password');
+    // }
   }
 
 }
