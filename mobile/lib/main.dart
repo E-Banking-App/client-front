@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:jabakallah/Home.dart';
 import 'dart:core';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
 
 import 'ChangePassword.dart';
 
@@ -8,6 +11,8 @@ import 'Home.dart';
 
 class GlobalData {
   static String? email;
+  static String? id;
+  static String? authToken; // token received from back end 
 }
 
 void main() {
@@ -167,7 +172,7 @@ class AuthentificationPageState extends State<AuthentificationPage> {
               const SizedBox(height: 16.0),
               // Le bouton pour soumettre le formulaire
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   // Vérifier la validité du formulaire
                   if (_formKey.currentState!.validate()) {
                     // Traitement des données saisies
@@ -193,10 +198,16 @@ class AuthentificationPageState extends State<AuthentificationPage> {
                     // Envoyer la requête POST avec les données
                     //String url = 'https://mon-service.com/authentification';
 
-                    //http.Response response = await http.post(Uri.parse(url), body: data);
+                    //http.Response response = await http.post(Uri.parse(url),headers: {'Content-Type': 'application/json'},  body: json.encode(data),);
+
+
                     //Map<String, dynamic> responseData = json.decode(response.body);
                     //bool isFirstLogin = responseData['isFirstLogin'];
+                    //String authToken = responseData['token'];
+                    //String id = responseData['id'];
 
+                    
+                     //GlobalData.authToken = authToken;
                     // Vérifier le code de réponse HTTP
                     //if (response.statusCode == 200) {
                     // Si la réponse est OK, afficher un message de succès

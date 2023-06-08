@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
@@ -44,6 +45,7 @@ class _RechargePageState extends State<RechargePage> {
   String password = '';
   bool isLoading = false;
   bool hasError = false;
+  String? id = GlobalData.id;
 
   String? validatePhoneNumber(String? value) {
     // Numéro de téléphone marocain: 10 chiffres commençant par 06, 07 ou 05
@@ -82,20 +84,25 @@ class _RechargePageState extends State<RechargePage> {
     // Prepare the request body
     
     Map<String, dynamic> requestBody = {
-      'email': email,
+      'id': id,
       'creancier': widget.creancier,
       'option': selectedOption,
       'amount': amount,
       'beneficiaryNumber': beneficiaryNumber,
       'password': password,
     };
+  final jsonData = jsonEncode(requestBody);
 
     // Make the API request
     try {
       http.Response response = await http.post(
-        Uri.parse('https://your-api-endpoint.com/recharge'),
-        body: requestBody,
-      );
+  Uri.parse('https://your-api-endpoint.com/recharge'),
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ${GlobalData.authToken}',
+  },
+  body: jsonData,
+);
 
       // Check if the request was successful
       if (response.statusCode == 200) {

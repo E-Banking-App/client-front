@@ -1,7 +1,9 @@
-import 'dart:convert';
 
-import 'package:flutter/material.dart'; 
+import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+
+import 'main.dart';
 
 class SoldePage extends StatefulWidget {
   @override
@@ -10,6 +12,9 @@ class SoldePage extends StatefulWidget {
 
 class SoldeState extends State<SoldePage> {
   double _solde = 0.0;
+  bool _isLoading = true;
+  bool _hasError = false;
+  String? email = GlobalData.email;
 
   @override
   void initState() {
@@ -18,31 +23,50 @@ class SoldeState extends State<SoldePage> {
   }
 
   void _fetchSolde() async {
-    // Effectuez votre requête HTTP pour récupérer le solde
-    // Par exemple, vous pouvez utiliser la librairie http et l'URL du back end
-    var url = Uri.parse('https://mon-service.com/solde');
-    var response = await http.get(url);
-  
-    if (response.statusCode == 200) {
-      // Analysez la réponse et extrayez le solde
-      var jsonData = json.decode(response.body);
-      var solde = jsonData['solde'];
+    try {
+      var headers = {
+  'Authorization': 'Bearer ${GlobalData.authToken}',
+};    
+      var url = Uri.parse('http://localhost:8082/client/clients/{email}/solde'); // Remplacez l'URL par celle de votre backend
+      var response = await http.get(url, headers: headers);
 
+      if (response.statusCode == 200) {
+        var solde = double.parse(response.body);
+
+        setState(() {
+          _solde = solde;
+          _isLoading = false;
+        });
+      } else {
+        setState(() {
+          _isLoading = false;
+          _hasError = true;
+        });
+      }
+    } catch (e) {
       setState(() {
-        _solde = double.parse(solde);
+        _isLoading = false;
+        _hasError = true;
       });
-    } else {
-      throw Exception('Failed to fetch solde');
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
+    Widget contentWidget;
+
+    if (_isLoading) {
+      contentWidget = CircularProgressIndicator(); // Afficher un indicateur de chargement
+    } else if (_hasError) {
+      contentWidget = Text('Erreur de connexion au backend'); // Afficher un message d'erreur
+    } else {
+      contentWidget = Text(
         'Solde: $_solde',
         style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-      ),
-    );
+      ); // Afficher le solde
+    }
+
+    return Center(child: contentWidget);
   }
 }
+

@@ -7,6 +7,7 @@ import 'DonationPage.dart';
 import 'CreancierPage.dart';
 import 'RechargePage.dart';
 import 'SoldePage.dart';
+import 'main.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -56,9 +57,11 @@ void _fetchCreanciers() async {
   _images['Lydec'] = 'https://upload.wikimedia.org/wikipedia/commons/3/37/Logo_Lydec_2010.png';
   
   //_images['Lydec'] = '/Users/nouhaed-daoui/Desktop/Lydec.png';
-  
+  var headers = {
+  'Authorization': 'Bearer ${GlobalData.authToken}',
+};
   var url = Uri.parse('https://mon-service.com/creanciers');
-  var response = await http.get(url);
+  var response = await http.get(url, headers: headers);
   
   if (response.statusCode == 200) {
     Map<String, dynamic> jsonData = json.decode(response.body);
@@ -81,10 +84,12 @@ void _fetchCreanciersDonations() async {
   donations.add('Association Kheir');
 
   imagesdonations['Association Kheir'] = 'https://www.barlamane.com/fr/wp-content/uploads/2018/05/dar-al-kheir-kenitra.jpg';
-  //_images['Lydec'] = '/Users/nouhaed-daoui/Desktop/Lydec.png';
   
+  var headers = {
+  'Authorization': 'Bearer ${GlobalData.authToken}',
+};
   var url = Uri.parse('https://mon-service.com/creanciersdonations');
-  var response = await http.get(url);
+  var response = await http.get(url, headers: headers);
   
   if (response.statusCode == 200) {
     Map<String, dynamic> jsonData = json.decode(response.body);
@@ -111,10 +116,12 @@ void _fetchCreanciersRecharges() async  {
   
   //imagesrecharges['Orange'] = 'https://emploi24.ma/wp-content/uploads/2023/01/Orange-Maroc-recrute-des-Stagiaires-PFE-2023.webp';
   imagesrecharges['Orange']='https://emploi24.ma/wp-content/uploads/2023/01/Orange-Maroc-recrute-des-Stagiaires-PFE-2023.webp';
-  //_images['Lydec'] = '/Users/nouhaed-daoui/Desktop/Lydec.png';
   
+  var headers = {
+  'Authorization': 'Bearer ${GlobalData.authToken}',
+};
   var url = Uri.parse('https://mon-service.com/creanciersrecharges');
-  var response = await http.get(url);
+  var response = await http.get(url, headers: headers);
   
   if (response.statusCode == 200) {
     Map<String, dynamic> jsonData = json.decode(response.body);

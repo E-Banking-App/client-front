@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -18,7 +20,7 @@ class _PasswordChangePageState extends State<ChangePassword> {
   bool _isLoading = false;
   String _errorMessage = '';
 
-   String? email = GlobalData.email;
+   
 
   @override
   void dispose() {
@@ -36,17 +38,27 @@ class _PasswordChangePageState extends State<ChangePassword> {
 
       final newPassword = _newPasswordController.text;
       
-
+      String? email = GlobalData.email;
 
       try {
+
+
+        final Map<String, dynamic> requestData = {
+          'newPassword': newPassword,
+          'email': email,
+             };
+
+        final String jsonData = json.encode(requestData);
         // Make the HTTP request to change the password
-        final response = await http.post(
-          Uri.parse('https://your-backend-url.com/change-password'),
-          body: {
-            'newPassword': newPassword,
-            'email ':email
-          },
-        );
+       final response = await http.post(
+           Uri.parse('https://localhost:8082/client/ChangePassword'),
+               headers: {
+                          'Content-Type': 'application/json',
+                           'Authorization': 'Bearer ${GlobalData.authToken}',
+                         },
+               body: jsonData,
+                 );
+
 
         if (response.statusCode == 200) {
           // Password change success
