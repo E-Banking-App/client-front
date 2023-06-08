@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -83,16 +85,23 @@ class _DonationFormState extends State<DonationForm> {
       _formKey.currentState!.save();
 
       try {
-        String? email = GlobalData.email;
+        String? id = GlobalData.id;
         // Send the donation request to the backend
-        final response = await http.post(
-          Uri.parse('BACKEND_URL'),
-          body: {
-            'creancier': widget.creancier,
-            'amount': donationAmount.toString(),
-            'email ':email,
-          },
-        );
+        final requestData = {
+                  'creancier': widget.creancier,
+                  'amount': donationAmount.toString(),
+                    'id': id,
+               };
+
+              final jsonData = jsonEncode(requestData);
+
+          final response = await http.post(Uri.parse('BACKEND_URL'),
+                               headers: {
+                                   'Content-Type': 'application/json',
+                                    'Authorization': 'Bearer ${GlobalData.authToken}',
+                                   },
+                                   body: jsonData,
+                                 );
 
         if (response.statusCode == 200) {
           // Donation successful
