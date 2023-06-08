@@ -8,7 +8,7 @@
         <div>
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>PhoneNumber</mat-label>
-            <input formControlName="phonenumber" matInput required placeholder="Enter Phone Number" />
+            <input formControlName="username" matInput required placeholder="Enter Phone Number" />
             <mat-error *ngIf="LoginForm.get('phone-number')?.errors?.['required']">
               Phone number is Required
             </mat-error>
