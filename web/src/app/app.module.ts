@@ -38,7 +38,7 @@ import {MatTreeModule} from '@angular/material/tree';
 const routes: Routes = [
   { path: '', component: LoginComponent,},
   { path: 'home', component: HomeComponent,canActivate: [AuthGuardGuard]},
-  { path: 'facture', component: FactureComponent, canActivate: [AuthGuardGuard]},
+  { path: 'facture/:creancier/:creance', component: FactureComponent, canActivate: [AuthGuardGuard]},
   { path: 'password', component: PasswordComponent,canActivate: [AuthGuardGuard]},
   { path: 'recharge', component: RechargeComponent, canActivate: [AuthGuardGuard]},
   { path: 'historique', component: HistoriqueComponent, canActivate: [AuthGuardGuard]},

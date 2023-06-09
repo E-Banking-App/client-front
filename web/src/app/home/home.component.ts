@@ -23,6 +23,17 @@ export class HomeComponent {
     this.router.navigate(['/donation', this.newDonationName]);
   }
 
+  newFactureCreancier: string | undefined;
+  newFactureCreance: string | undefined;
+
+  openFactureComponent(creancier: string, creance: string): void {
+    this.newFactureCreancier = creancier;
+    this.newFactureCreance = creance;
+    console.log(this.newFactureCreance)
+    console.log(this.newFactureCreancier)
+    this.router.navigate(['/facture', this.newFactureCreancier, this.newFactureCreance]);
+  }
+
   ngOnInit(): void {
     this.getCreditorsOfDonation();
     this.getCreditorsOfFacture();
@@ -40,6 +51,7 @@ export class HomeComponent {
       },
     })
   }
+
   getCreditorsOfFacture(): void {
     this.creditorService.getCreditorsOfFacture().subscribe({
       next: (data: any) => {
