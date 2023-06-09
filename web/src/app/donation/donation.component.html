@@ -3,18 +3,22 @@
 
 <div class="wrapper fadeInDown">
   <div id="formContent">
+    <div>
+      Name: {{ dataFromParent }}
+    </div>
 
-    <h1 class="color"> Page de donation </h1>
-    <form >
-      <label for="montant">Montant :</label>
-      <!-- <input type="text" id="montant" class="fadenIn first" [(ngModel)]="montant" required /> -->
-
-      <label for="nom">Nom :</label>
-      <!-- <input type="text" id="nom"   class="fadenIn first" [(ngModel)]="nom" required /> -->
-
-      <button type="submit"   class="fadenIn second">Faire un don</button>
+    <h1 class="color"> Donation </h1>
+    <form (ngSubmit)="onSubmit()" name="DonationForm" [formGroup]="DonationForm">
+      <div>
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Amount</mat-label>
+          <input formControlName="amount" matInput required placeholder="Enter Amount" />
+          <mat-error *ngIf="DonationForm.get('amount')?.errors?.['required']">
+            Amount is Required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <button style="height: 50px;" mat-flat-button color="primary" class="full-width">Donate</button>
     </form>
-
-    <p *ngIf="donationStatus">{{ donationStatus }}</p>
   </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {CreditorService} from '../services/creditor/creditor.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,15 @@ export class HomeComponent {
   creditorsFacture: any[] = [];
   creditorsRecharge: any[] = [];
 
-  constructor(private creditorService: CreditorService) { }
+  constructor(private creditorService: CreditorService, private router: Router) { }
+
+  newDonationName: string | undefined;
+
+  openDonationComponent(name: string): void {
+    this.newDonationName = name;
+    console.log(this.newDonationName)
+    this.router.navigate(['/donation', this.newDonationName]);
+  }
 
   ngOnInit(): void {
     this.getCreditorsOfDonation();
@@ -23,6 +32,7 @@ export class HomeComponent {
   getCreditorsOfDonation(): void {
     this.creditorService.getCreditorsOfDonation().subscribe({
       next: (data: any) => {
+        console.log(data)
         this.creditorsDonation = data;
       },
       error: (e: any) => {
@@ -33,6 +43,7 @@ export class HomeComponent {
   getCreditorsOfFacture(): void {
     this.creditorService.getCreditorsOfFacture().subscribe({
       next: (data: any) => {
+        console.log(data)
         this.creditorsFacture = data;
       },
       error: (e: any) => {
@@ -43,6 +54,7 @@ export class HomeComponent {
   getCreditorsOfRecharge(): void {
     this.creditorService.getCreditorsOfRecharge().subscribe({
       next: (data: any) => {
+        console.log(data)
         this.creditorsRecharge = data;
       },
       error: (e: any) => {

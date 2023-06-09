@@ -44,9 +44,8 @@ const routes: Routes = [
   { path: 'historique', component: HistoriqueComponent, canActivate: [AuthGuardGuard]},
   { path: 'facture', component: FactureComponent, canActivate: [AuthGuardGuard]},
   { path: 'payementpage', component: PayementpageComponent, canActivate: [AuthGuardGuard]},
-  { path: 'recharge', component: RechargeComponent, canActivate: [AuthGuardGuard] },
   { path: 'rechargepage', component: RechargepageComponent, canActivate: [AuthGuardGuard] },
-  { path: 'donation', component: DonationComponent, canActivate: [AuthGuardGuard] },
+  { path: 'donation/:data', component: DonationComponent, canActivate: [AuthGuardGuard] },
   { path: '**', component: NotfoundComponent,canActivate: [AuthGuardGuard] },
 
 ];

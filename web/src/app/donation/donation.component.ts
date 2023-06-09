@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {CreditorService} from '../services/creditor/creditor.service'
 
 @Component({
   selector: 'app-donation',
@@ -7,20 +10,37 @@ import { Component } from '@angular/core';
 })
 export class DonationComponent {
 
-  montant: number| undefined;
-  nom: string| undefined;
-  donationStatus: string| undefined;
+  amount: number| undefined;
+  dataFromParent: string | null = "";
 
-  // processDonation() {
-  //   // Logique de traitement de la donation ici
-  //   // Vous pouvez effectuer une requête HTTP vers votre serveur pour traiter la donation
-  //   // Pour cet exemple, nous allons simplement simuler une donation réussie après 2 secondes
-  //   this.donationStatus = 'Traitement de la donation...';
+  constructor(private route: ActivatedRoute, private api: CreditorService,) {}
 
-  //   setTimeout(() => {
-  //     this.donationStatus = 'Donation réussie !';
-  //   }, 2000);
-  // }
+  ngOnInit(): void {
+    this.dataFromParent = this.route.snapshot.paramMap.get('data');
+    console.log(this.dataFromParent)
+  }
+
+  email =  localStorage.getItem('email')
+
+  DonationForm = new FormGroup({
+    amount: new FormControl('', [Validators.required]),
+    creancier: new FormControl(this.route.snapshot.paramMap.get('data')),
+    email: new FormControl(this.email),
+  })
 
 
+  onSubmit() {
+    if(this.DonationForm.valid) {
+      console.log(this.DonationForm.value);
+      this.api.postDonation(this.DonationForm.value).subscribe(
+        response => {
+          console.log(response);
+          alert("Thank You")
+        },
+        error => {
+          console.error( error);
+        }
+      );
+    }
+  }
 }

@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Api } from "../../utils/api"
 
 @Injectable({
   providedIn: 'root'
 })
 export class PasswordService {
-  private backendUrl = 'http://localhost:8080'; // Replace with your backend URL
+  private backendUrl = Api; // Replace with your backend URL
 
 
   constructor(private http: HttpClient) { }

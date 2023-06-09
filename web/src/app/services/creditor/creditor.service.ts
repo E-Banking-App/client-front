@@ -28,4 +28,11 @@ export class CreditorService {
 
     return this.http.get<any>(`${Api}/creditor/donation`, {headers})
   }
+
+  postDonation(donation: any) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.post<any>(`${Api}/donation/mobile`, donation, {headers})
+  }
 }

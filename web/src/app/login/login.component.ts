@@ -33,6 +33,9 @@ export class LoginComponent {
           console.log(token)
           localStorage.setItem('token', token);//stock the token
           localStorage.setItem('id', response.id)
+          const usernameValue: string | null = this.LoginForm.get('username')!.value;
+          console.log(usernameValue);
+          localStorage.setItem('email', usernameValue?.toString()!)
 
           // Redirection vers la page de changement de mot de passe
           if (response.isFirstLogin == true){
