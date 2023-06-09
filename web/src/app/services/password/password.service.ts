@@ -12,7 +12,7 @@ export class PasswordService {
   constructor(private http: HttpClient) { }
 
   changePassword(password: any): Observable<any>{
-    const url = `${this.backendUrl}/agent/change_password`;
+    const url = `${this.backendUrl}/client/change_password`;
     console.log(url);
 
     //get the token
