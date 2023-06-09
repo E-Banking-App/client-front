@@ -1,4 +1,63 @@
 <app-navbar></app-navbar>
-<img src="assets/images/my-image.jpg" alt="My Image">
+<div class="container mt-3 pt-3">
+
+  <div class="card col-12 col-sm-10 col-md-11 m-auto">
+    <div class="card-body bg-light">
+      <h4 class="mb-3 my-2">Paiement de facture</h4>
+
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <button class="nav-link active text-secondary" id="creditors" data-bs-toggle="tab"
+            data-bs-target="#nav-creditors" type="button" role="tab" aria-controls="nav-creditors"
+            aria-selected="true">LISTE DES CRÉANCIERS</button>
+
+        </div>
+      </nav>
+
+      <div class="tab-content mt-2" id="nav-tabContent">
+
+        <div class="tab-pane fade show active " id="nav-creditors" role="tabpanel" aria-labelledby="creditors">
+          <div>
+            <select class="form-select my-3" aria-label="Categorie">
+              <option selected>Tous les categories</option>
+              <option value="facture">Facture</option>
+              <option value="recharge">Recharge</option>
+              <option value="donation">Donation</option>
+            </select>
+
+            <div class="row row-cols-1 row-cols-md-2 g-3">
+              <div *ngFor="let creditor of creditorsFacture" class="col ">
+                <div class="card mb-2 col h-100">
+                  <div class="row g-0">
+                    <div class="col-md-4 m-auto">
+                      <img src="../../assets/images/{{creditor.image}}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">{{creditor.name}}</h5>
+                        <h5 class="card-title">{{creditor.code}}</h5>
+                        <span class="d-block" *ngFor="let creance of creditor.creance"><b>&gt;</b>{{creance}}</span>
+                        <a [routerLink]="[creditor.category,creditor.surname]" class="stretched-link"></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="tab-pane fade" id="nav-history" role="tabpanel" aria-labelledby="history">
+          <div>
+            <div class="accordion mt-3" id="accordionPanelsStayOpenExample">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 

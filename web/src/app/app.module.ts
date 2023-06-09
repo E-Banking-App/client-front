@@ -16,7 +16,6 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import { FactureComponent } from './facture/facture.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { UserinfoComponent } from './userinfo/userinfo.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { RechargeComponent } from './recharge/recharge.component';
@@ -40,9 +39,7 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'home', component: HomeComponent},
   { path: 'facture', component: FactureComponent, canActivate: [AuthGuardGuard]},
-  { path: 'userinfo', component: UserinfoComponent, canActivate: [AuthGuardGuard]},
   { path: 'password', component: PasswordComponent,canActivate: [AuthGuardGuard]},
-  { path: 'userinfo', component: UserinfoComponent, canActivate: [AuthGuardGuard]},
   { path: 'recharge', component: RechargeComponent, canActivate: [AuthGuardGuard]},
   { path: 'historique', component: HistoriqueComponent, canActivate: [AuthGuardGuard]},
   { path: 'facture', component: FactureComponent, canActivate: [AuthGuardGuard]},
@@ -60,7 +57,6 @@ const routes: Routes = [
     HomeComponent,
     FactureComponent,
     NavbarComponent,
-    UserinfoComponent,
 
     RechargeComponent,
     DonationComponent,
