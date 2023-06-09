@@ -1,0 +1,21 @@
+// @import '~@angular/material/core/theming/all-theme';
+
+// Define the main container styles
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+// Define the creditor card styles
+.creditor-card {
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+// Style the creance (clickable)
+.creance {
+  cursor: pointer;
+  color: #007bff;
+  margin-bottom: 0.5rem;
+}

@@ -25,7 +25,7 @@ export class DonationComponent {
   DonationForm = new FormGroup({
     amount: new FormControl('', [Validators.required]),
     creancier: new FormControl(this.route.snapshot.paramMap.get('data')),
-    email: new FormControl(this.email),
+    phoneNumber: new FormControl(this.email),
   })
 
 

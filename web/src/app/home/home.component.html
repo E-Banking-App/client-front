@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar>
 
 <div>
     <h2 >Paiement de Facture</h2>
@@ -41,7 +41,97 @@
             <br/>
             <br/>
         </div>
-</div>
+</div> -->
 
 
 
+<app-navbar></app-navbar>
+
+<div class="container">
+  <div class="column">
+    <h2>Paiement de Facture</h2>
+    <mat-card class="creditor-card" *ngFor="let creditor of creditorsFacture">
+      <mat-card-header>
+        <mat-card-title>{{creditor.name}}</mat-card-title>
+        <mat-card-subtitle>Code: {{creditor.code}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngFor="let creance of creditor.creance" class="creance" (click)="openFactureComponent(creditor.name, creance.name)">
+          <b>&gt;</b> {{creance.name}}: {{creance.code}}
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="column">
+    <h2>Paiement de Rechargee</h2>
+    <mat-card class="creditor-card" *ngFor="let creditor of creditorsRecharge">
+      <mat-card-header>
+        <mat-card-title>{{creditor.name}}</mat-card-title>
+        <mat-card-subtitle>Code: {{creditor.code}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngFor="let creance of creditor.creance" class="creance" (click)="openRechargeComponent(creditor.name, creance.name)">
+          <b>&gt;</b> {{creance.name}}: {{creance.code}}
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="column">
+    <h2>Donation</h2>
+    <mat-card class="creditor-card" *ngFor="let creditor of creditorsDonation">
+      <mat-card-header>
+        <mat-card-title>{{creditor.name}}</mat-card-title>
+        <mat-card-subtitle>Code: {{creditor.code}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngFor="let creance of creditor.creance" class="creance" (click)="openDonationComponent(creance.name)">
+          <b>&gt;</b> {{creance.name}}: {{creance.code}}
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  </div>
+<!-- <div class="container">s
+  <div>s
+    dfhchg
+    dfhghg
+    <h2>Paiement de Facture</h2>
+    <div class="card" *ngFor="let creditor of creditorsFacture">
+      <h4 class="creditor-name">Name: {{creditor.name}}</h4>
+      <h4 class="creditor-code">Code: {{creditor.code}}</h4>
+      <span *ngFor="let creance of creditor.creance">
+        <div>
+          <b>&gt;</b> {{creance.name}}: {{creance.code}} <br/>
+        </div>
+      </span>
+    </div>
+  </div>
+
+  <div>
+    <h2>Paiement de Recharge</h2>
+    <div class="card" *ngFor="let creditor of creditorsRecharge">
+      <h4 class="creditor-name">Name: {{creditor.name}}</h4>
+      <h4 class="creditor-code">Code: {{creditor.code}}</h4>
+      <span *ngFor="let creance of creditor.creance">
+        <div>
+          <b>&gt;</b> {{creance.name}}: {{creance.code}} <br/>
+        </div>
+      </span>
+    </div>
+  </div>
+
+  <div>
+    <h2>Donation</h2>
+    <div class="card" *ngFor="let creditor of creditorsDonation">
+      <h4 class="creditor-name">Name: {{creditor.name}}</h4>
+      <h4 class="creditor-code">Code: {{creditor.code}}</h4>
+      <span *ngFor="let creance of creditor.creance">
+        <div class="creance" (click)="openDonationComponent(creance.name)">
+          <b>&gt;</b> {{creance.name}}: {{creance.code}} <br/>
+        </div>
+      </span>
+    </div>
+  </div>
+</div> -->

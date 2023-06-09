@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {CreditorService} from '../services/creditor/creditor.service'
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -32,6 +33,17 @@ export class HomeComponent {
     console.log(this.newFactureCreance)
     console.log(this.newFactureCreancier)
     this.router.navigate(['/facture', this.newFactureCreancier, this.newFactureCreance]);
+  }
+
+  newRehargeCreancier: string | undefined;
+  newRechargeCreance: string | undefined;
+
+ openRechargeComponent(creancier: string, creance: string): void {
+    this.newRehargeCreancier = creancier;
+    this.newRechargeCreance = creance;
+    console.log(this.newRechargeCreance)
+    console.log(this.newRehargeCreancier)
+    this.router.navigate(['/rechargepage', this.newRehargeCreancier, this.newRechargeCreance]);
   }
 
   ngOnInit(): void {
