@@ -60,7 +60,7 @@ void _fetchCreanciers() async {
   var headers = {
   'Authorization': 'Bearer ${GlobalData.authToken}',
 };
-  var url = Uri.parse('https://mon-service.com/creanciers');
+  var url = Uri.parse('http://localhost:8082/creditor/facture');
   var response = await http.get(url, headers: headers);
   
   if (response.statusCode == 200) {
@@ -88,7 +88,7 @@ void _fetchCreanciersDonations() async {
   var headers = {
   'Authorization': 'Bearer ${GlobalData.authToken}',
 };
-  var url = Uri.parse('https://mon-service.com/creanciersdonations');
+  var url = Uri.parse('http://localhost:8082/creditor/donation');
   var response = await http.get(url, headers: headers);
   
   if (response.statusCode == 200) {
@@ -120,16 +120,16 @@ void _fetchCreanciersRecharges() async  {
   var headers = {
   'Authorization': 'Bearer ${GlobalData.authToken}',
 };
-  var url = Uri.parse('https://mon-service.com/creanciersrecharges');
+  var url = Uri.parse('http://localhost:8082/creditor/recharge');
   var response = await http.get(url, headers: headers);
   
   if (response.statusCode == 200) {
     Map<String, dynamic> jsonData = json.decode(response.body);
     jsonData.forEach((key, value) {
       if (key != 'Orange') {
-        donations.add(key);
+        recharges.add(key);
       
-        imagesdonations[key] = value['image'];
+        imagesrecharges[key] = value['image'];
       }
     });
     setState(() {});

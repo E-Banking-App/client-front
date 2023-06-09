@@ -27,7 +27,10 @@ class SoldeState extends State<SoldePage> {
       var headers = {
   'Authorization': 'Bearer ${GlobalData.authToken}',
 };    
-      var url = Uri.parse('http://localhost:8082/client/clients/{email}/solde'); // Remplacez l'URL par celle de votre backend
+      
+      var url = Uri.parse('http://localhost:8082/client/clients/$email/solde');
+
+       // Remplacez l'URL par celle de votre backend
       var response = await http.get(url, headers: headers);
 
       if (response.statusCode == 200) {

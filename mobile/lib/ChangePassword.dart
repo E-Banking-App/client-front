@@ -51,7 +51,7 @@ class _PasswordChangePageState extends State<ChangePassword> {
         final String jsonData = json.encode(requestData);
         // Make the HTTP request to change the password
        final response = await http.post(
-           Uri.parse('https://localhost:8082/client/ChangePassword'),
+           Uri.parse('http://localhost:8082/client/ChangePassword'),
                headers: {
                           'Content-Type': 'application/json',
                            'Authorization': 'Bearer ${GlobalData.authToken}',
