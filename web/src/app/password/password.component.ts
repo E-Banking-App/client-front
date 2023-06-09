@@ -26,7 +26,7 @@ function passwordMatchValidator(): ValidatorFn {
 export class PasswordComponent {
   hide = true;
 
-  constructor(private router: Router, private passwordService: PasswordService, private _snackBar: MatSnackBar) { }
+  constructor(private router: Router, private passwordService: PasswordService) { }
 
   //the id of the client connected
   createdBy_id = localStorage.getItem('id');
@@ -39,15 +39,9 @@ export class PasswordComponent {
     { validators: passwordMatchValidator() } // Ajoutez la validation personnalisée au groupe de formulaires
   );
 
-  horizontalPosition: MatSnackBarHorizontalPosition = 'end';
-  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
-  openSnackBar(message: string, type: string) {
-    this._snackBar.open(message, type, {
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
-    });
-  }
+
+
 
   onSubmit() {
     console.log(this.newPasswordForm.valid);
@@ -61,7 +55,7 @@ export class PasswordComponent {
           // Handle success if needed
 
           this.newPasswordForm.reset()
-          this.openSnackBar("Password changed", "Success")
+
           //redirecte
           this.router.navigateByUrl('/home');
 
@@ -70,7 +64,7 @@ export class PasswordComponent {
         error => {
 
           console.error('Error Changing Password:', error);
-          this.openSnackBar("Something went wrong", "Error")
+
         }
       );
 

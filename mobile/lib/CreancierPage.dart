@@ -183,7 +183,7 @@ class CreancierPage extends StatelessWidget {
     try {
       // Make the HTTP request to fetch the bill amount
       var response = await http.get(
-  Uri.parse('https://your-backend-url.com/facture?creancier=$creancier&creance=$creance&factureNumber=$factureNumber'),
+  Uri.parse('http://localhost:8082/modepaiement/montantfacture?creancier=$creancier&creance=$creance&factureNumber=$factureNumber'),
   headers: {
     'Authorization': 'Bearer ${GlobalData.authToken}',
   },
@@ -263,7 +263,7 @@ class CreancierPage extends StatelessWidget {
     try {
       // Make the HTTP request to fetch the unpaid invoices based on the reference ID
       var response = await http.get(
-  Uri.parse('https://your-backend-url.com/unpaid-invoices?creancier=$creancier&creance=$creance&referenceId=$referenceId'),
+  Uri.parse('http://localhost:8082/modepaiement/facturesimpayees?creancier=$creancier&creance=$creance&referenceId=$referenceId'),
   headers: {
     'Authorization': 'Bearer ${GlobalData.authToken}',
   },
@@ -420,13 +420,13 @@ void _showUnpaidInvoices(BuildContext context, String creancier, String creance,
       String? id = GlobalData.id;
       // Make the HTTP request to validate the password and process the payment
       var response = await http.post(
-  Uri.parse('https://your-backend-url.com/payment'),
+  Uri.parse('http://localhost:8082/paiement/facture'),
   headers: {
     'Authorization': 'Bearer ${GlobalData.authToken}',
     'Content-Type': 'application/json',
   },
   body: jsonEncode({
-    'idclient': id,
+    'email': email,
     'creancier': creancier,
     'creance': creance,
     'amount': amount.toString(),

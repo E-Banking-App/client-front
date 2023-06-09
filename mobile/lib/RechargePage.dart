@@ -84,7 +84,7 @@ class _RechargePageState extends State<RechargePage> {
     // Prepare the request body
     
     Map<String, dynamic> requestBody = {
-      'id': id,
+      'email': email,
       'creancier': widget.creancier,
       'option': selectedOption,
       'amount': amount,
@@ -96,7 +96,7 @@ class _RechargePageState extends State<RechargePage> {
     // Make the API request
     try {
       http.Response response = await http.post(
-  Uri.parse('https://your-api-endpoint.com/recharge'),
+  Uri.parse('http://localhost:8082/recharge/internetsim'),
   headers: {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ${GlobalData.authToken}',

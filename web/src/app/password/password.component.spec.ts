@@ -10,7 +10,7 @@ describe('PasswordComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ PasswordComponent ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(PasswordComponent);
     component = fixture.componentInstance;

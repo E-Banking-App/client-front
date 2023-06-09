@@ -191,25 +191,28 @@ class AuthentificationPageState extends State<AuthentificationPage> {
                       // 'nom': nom,
                       // 'prenom': prenom,
                       //'telephone': telephone,
-                      'email': email,
+                      'username': email,
                       'passe': passe,
                     };
 
+                    // Envoyer la requête POST avec les données 
+                    String url = 'http://localhost:8082/auth/authenticate/client';
+                    
+                    try { 
+                    http.Response response = await http.post(Uri.parse(url),headers: {'Content-Type': 'application/json'},  body: json.encode(data),);
                     // Envoyer la requête POST avec les données
                     //String url = 'https://mon-service.com/authentification';
 
-                    //http.Response response = await http.post(Uri.parse(url),headers: {'Content-Type': 'application/json'},  body: json.encode(data),);
 
-
-                    //Map<String, dynamic> responseData = json.decode(response.body);
-                    //bool isFirstLogin = responseData['isFirstLogin'];
-                    //String authToken = responseData['token'];
-                    //String id = responseData['id'];
+                    Map<String, dynamic> responseData = json.decode(response.body);
+                    bool isFirstLogin = responseData['isFirstLogin'];
+                    String authToken = responseData['token'];
+                    String id = responseData['id'];
 
                     
-                     //GlobalData.authToken = authToken;
+                     GlobalData.authToken = authToken;
                     // Vérifier le code de réponse HTTP
-                    //if (response.statusCode == 200) {
+                    if (response.statusCode == 200) {
                     // Si la réponse est OK, afficher un message de succès
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
@@ -221,6 +224,26 @@ class AuthentificationPageState extends State<AuthentificationPage> {
                     GlobalData.email =
                         email; // Stocker la variable email dans GlobalData
 
+                   if (isFirstLogin) {
+                   // Si c'est la première connexion, naviguer vers la page ChangePassword
+                            Navigator.push(context,MaterialPageRoute(builder: (context) => ChangePassword()),);}
+                    else {
+                     // Sinon, naviguer vers la page Home
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => Home()),);
+                         }
+                    } else {
+                    //Sinon, afficher un message d'erreur avec le code de réponse HTTP
+                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Compte non existant '),),);
+                    }
+                    
+                    } catch (e) {
+                    //Afficher un message d'erreur s'il y a une exception
+                    ScaffoldMessenger.of(context).showSnackBar(
+                     SnackBar(
+                      content: Text('Erreur inattendue : $e'),
+                    ),
+                    );
+                    }
                     if (isFirstLogin) {
                       // Si c'est la première connexion, naviguer vers la page ChangePassword
                       Navigator.push(
