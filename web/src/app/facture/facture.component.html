@@ -1,2 +1,22 @@
 <app-navbar></app-navbar>
-<p>TODO facture</p>
+<br>
+<h1>Choisissez la facture que vous voulez payer : </h1>
+<br>
+<section class="facturations-section">
+  <div class="container py-5">
+          <ng-container *ngFor="let creancier of facturations; let i = index">
+              <div class="card  facture-card">
+                <a [routerLink]="['/payementpage']">
+                  <img [src]="creancier.image" class="card-img" [alt]="creancier.nom" />
+                </a>
+                  <div class="text-center mt-1">
+                    <h4 class="card-title">{{ creancier.montant }}</h4>
+                    <h6 class="text-primary mb-1 pb-3">{{ creancier.description }}</h6>
+                  </div>
+                </div>
+          </ng-container>
+        </div>
+
+</section>
+
+

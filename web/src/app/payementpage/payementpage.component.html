@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+<h1>Payment Page</h1>
+
+<form (ngSubmit)="processPayment()">
+  <div>
+    <label for="cardNumber">Card Number:</label>
+    <input type="text" id="cardNumber" [(ngModel)]="cardNumber" required>
+  </div>
+
+  <div>
+    <label for="expiryDate">Expiry Date:</label>
+    <input type="text" id="expiryDate" [(ngModel)]="expiryDate" required>
+  </div>
+
+  <div>
+    <label for="cvv">CVV:</label>
+    <input type="text" id="cvv" [(ngModel)]="cvv" required>
+  </div>
+
+  <button type="submit">Submit Payment</button>
+</form>
+
+<p *ngIf="paymentStatus">{{ paymentStatus }}</p>

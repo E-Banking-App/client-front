@@ -4,7 +4,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import {MatCardModule} from "@angular/material/card";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
@@ -17,15 +17,46 @@ import { FactureComponent } from './facture/facture.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserinfoComponent } from './userinfo/userinfo.component';
-import { PayementComponent } from './payement/payement.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import { RechargeComponent } from './recharge/recharge.component';
+import { DonationComponent } from './donation/donation.component';
+import { HistoriqueComponent } from './historique/historique.component';
+import { PayementpageComponent } from './payementpage/payementpage.component';
+import { RechargepageComponent } from './rechargepage/rechargepage.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+
+
+
+import { AuthGuardGuard } from './guards/auth-guard.guard';
+import { PasswordComponent } from './password/password.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+
+
+
+
 
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
-  { path: 'home', component: HomeComponent},
-  { path: 'facture', component: FactureComponent},
-  { path: 'userinfo', component: UserinfoComponent},
-  { path: 'payment', component: PayementComponent}
+  { path: '', component: LoginComponent,},
+  { path: 'home', component: HomeComponent,canActivate: [AuthGuardGuard]},
+  { path: 'facture', component: FactureComponent, canActivate: [AuthGuardGuard]},
+  { path: 'userinfo', component: UserinfoComponent, canActivate: [AuthGuardGuard]},
+  { path: 'password', component: PasswordComponent,canActivate: [AuthGuardGuard]},
+  { path: 'userinfo', component: UserinfoComponent, canActivate: [AuthGuardGuard]},
+  { path: 'recharge', component: RechargeComponent, canActivate: [AuthGuardGuard]},
+  { path: 'historique', component: HistoriqueComponent, canActivate: [AuthGuardGuard]},
+  { path: 'facture', component: FactureComponent, canActivate: [AuthGuardGuard]},
+  { path: 'payementpage', component: PayementpageComponent, canActivate: [AuthGuardGuard]},
+  { path: 'recharge', component: RechargeComponent, canActivate: [AuthGuardGuard] },
+  { path: 'rechargepage', component: RechargepageComponent, canActivate: [AuthGuardGuard] },
+  { path: 'donation', component: DonationComponent, canActivate: [AuthGuardGuard] },
+  { path: '**', component: NotfoundComponent,canActivate: [AuthGuardGuard] },
+
+
+
+
+
 
 
 
@@ -38,7 +69,20 @@ const routes: Routes = [
     FactureComponent,
     NavbarComponent,
     UserinfoComponent,
-    PayementComponent,
+
+    RechargeComponent,
+    DonationComponent,
+    HistoriqueComponent,
+    PayementpageComponent,
+    RechargepageComponent,
+    PasswordComponent,
+    NotfoundComponent,
+
+
+
+
+
+
 
   ],
   imports: [
@@ -53,7 +97,11 @@ const routes: Routes = [
     RouterOutlet,
     RouterModule.forRoot(routes),
     MatToolbarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    FormsModule,
+    MatGridListModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

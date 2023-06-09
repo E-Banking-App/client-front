@@ -1,12 +1,11 @@
 
-
 .container{
     display : grid ;
     grid-template-columns: auto auto; 
 
 }
 
-.facturations-section {
+.creanciers-section {
     background-color: #ffffff;
     padding: 15px 0;
     margin-left: 10%;
@@ -26,7 +25,7 @@
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   }
   
-  .facture-card {
+  .creancier-card {
     padding: 10px;
   }
   
@@ -58,4 +57,5 @@
     font-size: 2.5rem;
     font-weight: bold;
   }
+  
 
